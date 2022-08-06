@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Button, Card, Col, Input, Row } from 'antd';
 import './App.css';
 import DynamicCodeRender from './dynamicCodeRender';
+import demoTxt from '!!raw-loader!./demo.jsx';
 
 const autoSize = { minRows: 25, maxRows: 25 };
 function App() {
-  const [text, setText] = useState("");
-  const [code, setCode] = useState(null);
+  const [text, setText] = useState(demoTxt);
+  const [code, setCode] = useState(text);
   const [errorInfo, setErroInfo] = useState(null);
   const onSubmit = () => {
     setCode(text);
