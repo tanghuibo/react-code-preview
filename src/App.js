@@ -16,14 +16,14 @@ function App() {
     <div className="App">
       <Row gutter={16}>
         <Col span={12}>
-          <Card style={{ height: '90vh' }} title={
+          <Card title={
             <Button type='primary' onClick={onSubmit}>提交</Button>
           }>
             <Input.TextArea autoSize value={text} onChange={e => setText(e.target.value)} />
           </Card>
         </Col>
         <Col span={12}>
-          <Card style={{ height: '90vh' }} title= {
+          <Card title= {
             <Button danger={errorInfo != null} type="primary">{errorInfo ? '失败' : '成功'}</Button>
           } >
             {errorInfo ? <p style={{ color: 'red' }}> {errorInfo}</p> : <DynamicCodeRender code={code} onError={e => {
