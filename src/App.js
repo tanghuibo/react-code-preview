@@ -4,7 +4,6 @@ import './App.css';
 import DynamicCodeRender from './dynamicCodeRender';
 import demoTxt from '!!raw-loader!./demo.jsx';
 
-const autoSize = { minRows: 25, maxRows: 25 };
 function App() {
   const [text, setText] = useState(demoTxt);
   const [code, setCode] = useState(text);
@@ -20,13 +19,13 @@ function App() {
           <Card style={{ height: '90vh' }} title={
             <Button type='primary' onClick={onSubmit}>提交</Button>
           }>
-            <Input.TextArea autoSize={autoSize} value={text} onChange={e => setText(e.target.value)} />
+            <Input.TextArea autoSize value={text} onChange={e => setText(e.target.value)} />
           </Card>
         </Col>
         <Col span={12}>
-          <Card style={{ height: '90vh' }} title={
-            <div style={{ height: 32 }}></div>
-          }>
+          <Card style={{ height: '90vh' }} title= {
+            <Button danger={errorInfo != null} type="primary">{errorInfo ? '失败' : '成功'}</Button>
+          } >
             {errorInfo ? <p style={{ color: 'red' }}> {errorInfo}</p> : <DynamicCodeRender code={code} onError={e => {
               setErroInfo(e.message);
               console.error(e);
